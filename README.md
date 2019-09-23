@@ -46,5 +46,8 @@ The National Hurricane Center (NHC) keeps records of tropical cyclones (tropical
     - High Wind SW - 64 kt wind radii maximum extent in southwestern quadrant (nm)
     - High Wind NW - 64 kt wind radii maximum extent in northwestern quadrant (nm)
  
- ###### Data Source
+ ### Data Source
  https://www.kaggle.com/noaa/hurricane-database
+ 
+ ### Troubleshooting GitHub Notebook Rendering
+ Sometimes GitHub has trouble rendering notebooks. Should GitHub have troubles rendering the notebook in this project, please navigate to https://nbviewer.jupyter.org/ and enter https://github.com/nlaluzerne/DataExplorer in the text bar to view the notebook.
