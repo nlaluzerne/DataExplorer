@@ -1,0 +1,20 @@
+Requirements:
+
+    Tools:
+        Jupyter Notebooks
+
+    Python:
+        Python 3.7 (Anaconda)
+
+    Libraries:
+        pandas
+        matplotlib.pyplot
+        datetime
+        pandas.plotting
+
+    File Structure:
+        Will have to modify all file paths to fit individual file structures
+
+    Necessary Files:
+        atlantic.csv
+        pacific.csv

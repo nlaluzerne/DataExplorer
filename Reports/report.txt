@@ -1,0 +1,88 @@
+I chose to combine the Atlantic HURDAT2 database and the Pacific HURDAT2 database because I think by
+combining these databases, additional value can be added to the data.
+    1) Both the Atlantic and Pacific data sets contain the exact same information about tropical cyclones,
+    the only difference being the region the tropical cyclones occurred in. So it follows that it would be
+    logical to combine them. Also by combining the data sets, it makes it easier to perform analysis on all
+    tropical cyclones documented by the NHC.
+    2) Combining the datasets also makes it easier to discern any differences or relationships between cyclones
+    in the Atlantic Ocean and the Pacific Ocean based on differnt measured parameters of the cyclones. For
+    example, is there a difference in overall strength of hurricanes between the two regions? And following that,
+    is there a difference in maximum sustained wind speed and/or minimum central pressure between the two
+    regions?
+
+Process
+    1.  Read in the data sets
+    2.  Since I am only concerned about hurricanes, filter the data sets using the Status column where Status = HU
+    3.  The timeframe of records in the Atlantic and Pacific Ocean differ, with the Atlantic data set going
+        farther back in time. For comparison purposes, I wanted to consider the same timeframes, so I filtered
+        the Atlantic data set by the Date column where Date >= 19490611, which is the the date the Pacific data
+        set starts
+    4.  For ease, I added a column to each of the data sets that combined the Date column and the Time
+        column into one datetime string
+    5.  For this analysis, I was concerned with maximum sustained winds and minimum recorded central pressure.
+        Also, most hurricanes have more than one entry as they occur over several days. I only wanted to consider
+        each hurricane once, based on either the maximum sustained wind speed or the minimum recorded central
+        pressure over the life of the hurricane. I filtered each of the data sets twice; the first to filter
+        the data sets by the Maximum Wind column, and the second to filter the data sets by the Minimum Pressure
+        column. This was done separately because, although not common, theoretically the maximum wind does not
+        have to occur at the minimum central pressure.
+    6.  Maximum sustained winds have been recorded in hurricanes for the entirety of the data sets; however, many
+        older records of hurricanes do not have minimum central pressure records. I filtered out the records
+        with missing minimum central pressure from the data set I filtered using minimum pressure.
+    7.  Calculate the maximum, median, mean, and standard deviation of the maximum recorded wind speeds of each data
+        set. The minimum was not calculated for maximum wind speed as a cyclone must have a minimum sustained wind
+        speed of 64 kts in order to be considered a hurricane, so the minimium wind speed is already known.
+    8.  Calculate the maximum, minimum, median, mean, and standard deviation of the minimim recorded central pressure
+        of each data set.
+    9.  Combine the two datasets into one. Since the ID column already differentiates the region of the hurricane -
+        IDs of hurricanes in the Pacific Ocean begin with EP and hurricnes in the Atlantic Ocean begin with AL - a new
+        column to differntiate the region did not need to be added.
+    10. Since the separate datasets have already been scrubbed, combine the scrubbed data sets into one (one for
+        maximum wind and one for minimum pressure). This saves on computation time by not having to rescrub the
+        combined dataset.
+    11. Calculate the maximum, median, mean, and standard deviation of the maximum recorded wind speeds on the combined
+        data set.
+    12. Calculate the maximum, minimum, median, mean, and standard deviation of the minimim recorded central pressure
+        of the combined data set.
+    13. Plot the maximum wind speed of hurricanes in the Atlantic and Pacific Oceans
+    14. Print the statistics on the maximum recorded wind speed of hurricanes in the Atlantic and Pacific Oceans
+    15. Plot the minimum central pressure of hurricanes in the Atlantic and Pacific Oceans
+    16. Print the statistics on the minimum recorded central pressure of hurricanes in the Atlantic and Pacific Oceans
+    17. Plot the relationship between maximum wind speed and minimum pressure at the minimum pressure of hurricanes in
+        the Atlantic and Pacific Oceans
+    18. Plot the maximum wind speed using the combined data set
+    19. Print out the statistics on the maximum recorded wind speeds of the combined data set
+    20. Plot the minimum central pressure using the combined data set
+    21. Print out the statistics on the minimum recorded central pressure of the combined data set
+    22. Plot the relationship between maximum wind speed and minimim pressure at the minimum pressure using the
+        combined data set
+    23. Save all newly created data sets to the Data folder
+
+Results
+    1.  When comparing the maximum sustained wind speed of hurricanes in the Atlantic and Pacific Oceans, it was found
+        that there is not a differnece between the wind speeds of hurricanes in the Atlantic and Pacific Oceans. The
+        maximum wind speed of a hurricane was recorded in the Pacific Ocean, but the mean, median, and standard deviation
+        are all statistically similar.
+    2.  When comparing the minimum central pressure of hurricanes in the Atlantic and Pacific Oceans, it was found that there
+        is a slight differnece between the minimim pressure of hurricanes in the Atlantic and Pacific Oceans. The minimum central
+        pressure of hurricanes in the Pacific Ocean is less than the minimim central pressure of hurricanes in the Atlantic Ocean,
+        on average by about 4-5 mb. A conclusion of this finding could be that hurricanes in the Pacific Ocean could be, on average,
+        stronger than hurricanes in the Atlantic Ocean, given that, in general, the lower the minimum central pressure, the
+        stronger the hurricane.
+    3.  When comparing the relationship between maximum wind speed and minimum pressure at the minimum pressure of hurricanes
+        in the Atlantic and Pacific Oceans, it was found that hurricanes in both oceans followed the pattern: The lower the
+        central pressure, the higher the maximum wind speed. Interesting to note, it does appear that there may be more of a
+        spread of central pressures at a given wind speed in the Atlantic Ocean when compared with the Pacific Oceean. This
+        analysis did not study the effects of the data sets and how differnet sizes of data sets could affect this spread, given
+        that the Atlantic Ocean had more records of hurricanes in the same timeframe than the Pacific Ocean. Further analysis
+        of this effect needs to be completed before conclusions can be drawn.
+    4.  When analyzing the maximum sustained wind speed of all hurricanes, it was found that there were no obvious ways to discern
+        whether a hurricane occurred in the Atlantic Ocean or the Pacific Ocean. This is supported by the statistics that were
+        calculated on the maximum wind speed of hurricanes in the Atlantic and Pacific Oceans.
+    5.  When analyzing the minimum central pressure of all hurricanes, it was found that there were no obvious ways to discern
+        whether a hurricane occurred in the Atlantic Ocean or the Pacific Ocean. This should be analyzed further, given that
+        hurricanes in the Pacific may, in general, have a lower minimum central pressure than hurricanes in the Atlantic Ocean.
+    6.  When analyzing the relationship between maximum wind speed and minimum pressure at the minimum pressure of all hurricanes,
+        it was found that there were no obvious ways to discern whether a hurricane occurred in the Atlantic Ocean or the Pacific
+        Ocean. This is supported by the fact that hurricanes in both regions were found to follow the same pattern of "lower
+        minimum pressure -> strong winds".
